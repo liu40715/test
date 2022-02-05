@@ -43,26 +43,26 @@ adlink adm cdrom sudo audio dip video plugdev i2c lpadmin gdm docker sambashare 
 * Add Harbor into docker registry
     * 如果要從habor中Pull images必須在daemon.json加入下面
     ```
-    "insecure-registries" : ["10.88.19.126"],    
-    "log-opts": {      
-    "max-size": "10m",      
+    "insecure-registries" : ["10.88.19.126"],   
+    "log-opts": {    
+    "max-size": "10m"     
     "max-file": "5“
     ```
 ```linux=
 $ sudo vi /etc/docker/daemon.json
-    {    
-        "default-runtime": "nvidia",    
-        "runtimes": {        
-            "nvidia": {            
+    {  
+        "default-runtime": "nvidia",
+        "runtimes": {       
+            "nvidia": {        
                 "path": "nvidia-container-runtime",
                 "runtimeArgs": []
-            }    
-        },    
+            }
+        },  
         "insecure-registries" : ["10.88.19.126"],
         "log-opts": {
             "max-size": "10m",
             "max-file": "5",
-        }
+        }
     }
 $ sudo systemctl restart docker //(check if available: $ docker info)
 ```
